@@ -1,0 +1,31 @@
+$none:none;
+$center:center;
+$white:white;
+$max:100%;
+$pointer:pointer;
+$abs:absolute;
+$btn-color:#777;
+$lightgrey:lightgrey;
+$grey:grey;
+$italic:italic;
+$block:block;
+
+@mixin flex{
+    display:flex;
+    align-items:$center;
+    background-color: $white;
+}
+
+@mixin size($x,$y,$z,$c) {
+    height:$x;
+    width:$y;
+    top:$z;
+    left:$c;
+}
+
+@mixin icon-btn($y,$clr,$size){
+    cursor:$pointer;
+    padding:$y;
+    color:$clr;
+    font-size:$size;
+}

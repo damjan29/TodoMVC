@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="scripts/angular.min.js"></script>
+    <script src="app.module.js"></script>
+    <title>App</title>
+</head>
+
+<body ng-app="myApp" ng-controller="Cntrl">
+    <div class="wrapper">
+        <h1 id="title">todos</h1>
+        <div class="main-container">
+            <form ng-submit="addItem()">
+                <div class="items">
+                    <span ng-show="todos.length > 1" ng-click="checkAll()"><i class="bottom"></i></span>
+                    <input type="text" ng-model="newItem" class="input-field" placeholder="What needs to be done?">
+                </div>
+            </form>
+
+            <ul class="list">
+                <li ng-repeat="x in todosFiltered()">
+                    <label class="checkbox-container">
+                        <input type="checkbox" ng-model="x.done" ng-class="{'done':x.done}">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="list-item" ng-class="{'done':x.done}" contentEditable="{{edit}}"
+                        ng-click="edit = true">{{x.title}}</span>
+                    <span ng-click="deleteItem($index)" class="delete-icon">&times;</span>
+                </li>
+            </ul>
+            <div class="filter-section">
+                <div class="first">
+                    <span>{{count()}} Item left</span>
+                </div>
+                <div class="middle" ng-init="filter = 'all'">
+                    <button ng-click="filter = 'all'" ng-class="{'active': filter === 'all'}">All</button>
+                    <button ng-click="filter = 'active'" ng-class="{'active': filter === 'active'}">Active</button>
+                    <button ng-click="filter = 'completed'" ng-class="{'active': filter === 'completed'}">Completed</button>
+                </div>
+                <div ng-show="oneChecked()" class="last">
+                    <button ng-click="clearComplited()">Clear completed</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

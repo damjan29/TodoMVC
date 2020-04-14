@@ -1,0 +1,39 @@
+/* Filetr-section */
+ 
+.filter-section{
+    display:flex;
+    align-items:$center;
+    width:$max;
+    font-size:14px;
+    color:$btn-color;
+    button {
+      @include icon-btn(4px,$btn-color,inherit);
+      border:$none;
+      background:$none;
+    }
+  }
+  
+  .first{
+    flex: 0 0 20%;
+  }
+  
+  .middle{
+    flex: 0 0 50%;
+    display:flex;
+    button {
+      flex:0 0 25%;
+    }
+  }
+  
+  .last{
+    flex: 0 0 30%;
+  }
+  .last button:hover{
+    text-decoration: underline;
+  }
+  
+  button.active {
+    border:1px solid $btn-color;
+    background:rgb(248, 248, 248);
+    border-radius:2px;
+  }
