@@ -22,14 +22,14 @@
             </form>
 
             <ul class="list">
-                <li ng-repeat="x in todosFiltered()">
+                <li ng-repeat="x in todosFiltered() track by $index">
                     <label class="checkbox-container">
-                        <input type="checkbox" ng-model="x.done" ng-class="{'done':x.done}">
+                        <input type="checkbox" ng-model="x.done" ng-class="{'done':x.done}" ng-click="itemCompleted($index)">
                         <span class="checkmark"></span>
                     </label>
-                    <span class="list-item" ng-class="{'done':x.done}" contentEditable="{{edit}}"
-                        ng-click="edit = true">{{x.title}}</span>
-                    <span ng-click="deleteItem($index)" class="delete-icon">&times;</span>
+                        <span class="list-item" ng-class="{'done':x.done}" contentEditable="{{edit}}" 
+                         ng-blur="editItem($event,$index)" ng-click="edit = true">{{x.title}}</span>
+                        <span ng-click="deleteItem($index)" class="delete-icon">&times;</span>
                 </li>
             </ul>
             <div class="filter-section">
